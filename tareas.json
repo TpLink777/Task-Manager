@@ -1,0 +1,7 @@
+
+    {
+        "id": "1",
+        "descripcion": "tareas de prueba # 1",
+        "estado": "no completada",
+        "dependencias": "[]"
+    }
