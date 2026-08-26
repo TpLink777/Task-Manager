@@ -1,7 +1,20 @@
-
-    {
-        "id": "1",
-        "descripcion": "tareas de prueba # 1",
-        "estado": "no completada",
-        "dependencias": "[]"
-    }
+[
+  {
+    "id": 1,
+    "descripcion": "mi nueva tarea",
+    "estado": "No completado",
+    "dependencias": []
+  },
+  {
+    "id": 2,
+    "descripcion": "realizar mis tareas cotidianas\n",
+    "estado": "No completado",
+    "dependencias": []
+  },
+  {
+    "id": 3,
+    "descripcion": "lavar el carro de mi padre",
+    "estado": "No completado",
+    "dependencias": []
+  }
+]
