@@ -17,7 +17,7 @@ if (exist) {
 
 
 const obtenerIdMayor = (arregloTareas) => {
-    if(!arregloTareas || arregloTareas.length === 0) return 0
+    if (!arregloTareas || arregloTareas.length === 0) return 0
     return Math.max(...arregloTareas.map((item) => item.id))
 };
 
@@ -53,9 +53,23 @@ switch (value) {
         break;
 
     case 'delete':
-        console.log('vas a eliminar algo')
-        break;
 
+        const valId = Number(argv[3])
+
+        if (!valId) {
+            throw new Error('Para eliminar un elemento debes de diligenciar su ID')
+        }
+
+        let taskUpdate = tareas.filter(item => item.id !== valId)
+
+        if (tareas.length === taskUpdate.length) {
+            throw new Error("El ID no existe")
+        }
+
+        writeFileSync(Ruta, JSON.stringify(taskUpdate, null, 2));
+        console.log(`Tarea eliminada con éxito (ID: ${valId})`);
+
+        break;
     case 'complete':
         console.log('has completado algo')
         break;

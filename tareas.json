@@ -1,19 +1,25 @@
 [
   {
     "id": 1,
-    "descripcion": "mi nueva tarea",
+    "descripcion": "nueva tareas",
     "estado": "No completado",
     "dependencias": []
   },
   {
     "id": 2,
-    "descripcion": "realizar mis tareas cotidianas\n",
+    "descripcion": "nueva tareas",
     "estado": "No completado",
     "dependencias": []
   },
   {
-    "id": 3,
-    "descripcion": "lavar el carro de mi padre",
+    "id": 4,
+    "descripcion": "nueva tareas",
+    "estado": "No completado",
+    "dependencias": []
+  },
+  {
+    "id": 5,
+    "descripcion": "nueva tareas",
     "estado": "No completado",
     "dependencias": []
   }
