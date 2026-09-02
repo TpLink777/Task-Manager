@@ -22,5 +22,17 @@
     "descripcion": "nueva tareas",
     "estado": "No completado",
     "dependencias": []
+  },
+  {
+    "id": 6,
+    "descripcion": "Mi nueva tarea",
+    "estado": "No completado",
+    "dependencias": []
+  },
+  {
+    "id": 7,
+    "descripcion": "test",
+    "estado": "No completado",
+    "dependencias": []
   }
 ]
