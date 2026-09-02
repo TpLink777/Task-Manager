@@ -6,6 +6,8 @@ import { join } from 'path'
 let tareas = []
 const Ruta = join(cwd(), 'tareas.json')
 const exist = existsSync(Ruta)
+const valId = Number(argv[3])
+
 
 
 if (exist) {
@@ -34,8 +36,7 @@ switch (value) {
         let nuevaTarea = {
             id: obtenerIdMayor(tareas) + 1,
             descripcion: argv[3],
-            estado: 'No completado',
-            dependencias: []
+            estado: 'No completado'
         }
 
         tareas.push(nuevaTarea)
@@ -54,8 +55,6 @@ switch (value) {
 
     case 'delete':
 
-        const valId = Number(argv[3])
-
         if (!valId) {
             throw new Error('Para eliminar un elemento debes de diligenciar su ID')
         }
@@ -63,7 +62,8 @@ switch (value) {
         let taskUpdate = tareas.filter(item => item.id !== valId)
 
         if (tareas.length === taskUpdate.length) {
-            throw new Error("El ID no existe")
+            error("El ID diligenciado no existe")
+            break
         }
 
         writeFileSync(Ruta, JSON.stringify(taskUpdate, null, 2));
@@ -71,7 +71,30 @@ switch (value) {
 
         break;
     case 'complete':
-        console.log('has completado algo')
+
+        if (!valId) {
+            warn('Para completar una tarea debes de diligenciar su ID')
+            break
+        }
+
+        let findId = tareas.find(i => valId === i.id)
+
+        if (findId !== undefined) {
+
+            if (findId.estado === 'Completado') {
+                warn(`La tarea con el ID diligenciado ${valId} ya tiene su estado como "Completado"`)
+                break
+            }
+
+            findId.estado = 'Completado'
+
+            writeFileSync(Ruta, JSON.stringify(tareas, null, 2))
+            info(`Has completado la tarea con el ID ${valId}`)
+        } else {
+            error("El ID diligenciado no existe")
+            break
+        }
+
         break;
 
     default:
