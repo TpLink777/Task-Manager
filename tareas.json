@@ -2,37 +2,26 @@
   {
     "id": 1,
     "descripcion": "nueva tareas",
-    "estado": "No completado",
-    "dependencias": []
+    "estado": "Completado"
   },
   {
     "id": 2,
-    "descripcion": "nueva tareas",
-    "estado": "No completado",
-    "dependencias": []
+    "descripcion": "nueva tareas v2",
+    "estado": "Completado"
+  },
+  {
+    "id": 3,
+    "descripcion": "nueva tareas v3",
+    "estado": "Completado"
   },
   {
     "id": 4,
-    "descripcion": "nueva tareas",
-    "estado": "No completado",
-    "dependencias": []
+    "descripcion": "nueva tareas v4",
+    "estado": "No completado"
   },
   {
     "id": 5,
-    "descripcion": "nueva tareas",
-    "estado": "No completado",
-    "dependencias": []
-  },
-  {
-    "id": 6,
-    "descripcion": "Mi nueva tarea",
-    "estado": "No completado",
-    "dependencias": []
-  },
-  {
-    "id": 7,
-    "descripcion": "test",
-    "estado": "No completado",
-    "dependencias": []
+    "descripcion": "nueva tareas v5",
+    "estado": "Completado"
   }
 ]
