@@ -1,8 +1,14 @@
 import { cwd, argv } from 'process'
 import { writeFileSync, readFileSync, existsSync } from 'fs'
 import { join } from 'path'
+import c from 'chalk';
 
-// Comandos esenciales: add, list, delete, complete
+const log = console.log;
+const error = (msg) => log(c.red(msg));
+const success = (msg) => log(c.green(msg));
+const warn = (msg) => log(c.yellow(msg));
+const info = (msg) => log(c.cyan(msg));
+
 let tareas = []
 const Ruta = join(cwd(), 'tareas.json')
 const exist = existsSync(Ruta)
@@ -27,7 +33,7 @@ switch (value) {
     case 'add':
 
         if (!argv[3]) {
-            console.log('Error: Debes agregar una descripción para la tarea. Ejemplo: node script.js add "Mi tarea"')
+            error('Debes agregar una descripción para la tarea. Ejemplo: node index.js add "Mi tarea"')
             break;
         }
 
@@ -41,12 +47,12 @@ switch (value) {
         tareas.push(nuevaTarea)
         writeFileSync(Ruta, JSON.stringify(tareas, null, 2))
 
-        console.log(`Tarea agregada con éxito (ID: ${nuevaTarea.id})`)
+        log(`Tarea ${c.green('agregada')} con éxito (ID: ${c.magenta(nuevaTarea.id)})`)
         break;
 
     case 'list':
         if (tareas.length === 0) {
-            console.log('No hay tareas registradas.')
+            warn('No hay tareas registradas.')
         } else {
             console.table(tareas)
         }
@@ -57,23 +63,26 @@ switch (value) {
         const valId = Number(argv[3])
 
         if (!valId) {
-            throw new Error('Para eliminar un elemento debes de diligenciar su ID')
+            warn('Para eliminar un elemento debes de diligenciar su ID')
+            break
         }
 
         let taskUpdate = tareas.filter(item => item.id !== valId)
 
         if (tareas.length === taskUpdate.length) {
-            throw new Error("El ID no existe")
+            error("El ID no existe")
+            break
         }
 
         writeFileSync(Ruta, JSON.stringify(taskUpdate, null, 2));
-        console.log(`Tarea eliminada con éxito (ID: ${valId})`);
+        success(`Tarea eliminada con éxito (ID: ${valId})`);
 
-        break;
+        break
     case 'complete':
-        console.log('has completado algo')
+        info('Has completado algo')
         break;
 
     default:
-        console.log('Las opciones disponibles son: add, list, delete y complete')
+        info('Las opciones disponibles son: add, list, delete y complete')
+        break;
 }
